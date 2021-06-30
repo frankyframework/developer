@@ -47,7 +47,6 @@ $mkdir = array(
     "/public/jquery",
     "/public/js",
     "/public/ajax",
-    "/public/skin",
     "/public/upload",
     "/sess_tmp/",
 
@@ -61,7 +60,8 @@ $fullmkdir = array(
     "/public/jquery-ui",
     "/public/plugins",
     "/public/js/",
-    "/public/skin/default",
+    "/public/ajax/",
+    "/public/upload/"
     );
 
 $archivos = array(
@@ -74,23 +74,13 @@ $archivos = array(
                 "/public/ajax/ajax.php",);
 
 
-$ibd->Query("JS","Select js,jquery FROM franky WHERE status=1");
+$ibd->Query("JS","Select jquery FROM franky WHERE status=1");
 
 while($registro = $ibd->fetch("JS"))
 {
 
-    $js = json_decode($registro["js"],true);
+    
     $jquery = json_decode($registro["jquery"],true);
-    if(!empty($js))
-    {
-        foreach($js as $_js)
-        {
-            if(!in_array("/public/js/".$_js,$archivos))
-            {
-                $archivos[] = "/public/js/".$_js;
-            }
-        }
-    }
     if(!empty($jquery))
     {
         foreach($jquery as $_jquery)
@@ -102,42 +92,6 @@ while($registro = $ibd->fetch("JS"))
         }
     }
 }
-
-
-$modulos = getModulos("DESC");
-
-if(!empty($modulos))
-{
-    foreach($modulos as $modulo)
-    {
-
-       if($modulo != "developer")
-       {
-           if(file_exists(PROJECT_DIR.'/modulos/'.$modulo))
-           {
-                $fullmkdir[] = '/modulos/'.$modulo;
-           }
-           if(file_exists(PROJECT_DIR.'/public/ajax/'.$modulo))
-           {
-                $fullmkdir[] = '/public/ajax/'.$modulo;
-           }
-           if(file_exists(PROJECT_DIR.'/public/skin/'.$modulo))
-           {
-                $fullmkdir[] = '/public/skin/'.$modulo;
-           }
-           if(file_exists(PROJECT_DIR.'/public/upload/'.$modulo))
-           {
-                $fullmkdir[] = '/public/upload/'.$modulo;
-           }
-           if(file_exists(PROJECT_DIR.'/public/js/'.$modulo.'.js'))
-           {
-                $archivos[] = '/public/js/'.$modulo.'.js';
-           }
-       }
-    }
-}
-
-
 
 
 echo "[+]Conectando con servicio FTP (".$host.")...\n";

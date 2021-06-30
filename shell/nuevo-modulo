@@ -65,8 +65,7 @@ $paths = array(PROJECT_DIR."/modulos/".$nombre,
                 PROJECT_DIR."/modulos/".$nombre."/locale/es_MX/LC_MESSAGES/",
                 PROJECT_DIR."/modulos/".$nombre."/menu/",
                 PROJECT_DIR."/modulos/".$nombre."/shell/",
-                PROJECT_DIR."/modulos/".$nombre."/sql/",
-                PROJECT_DIR."/public/ajax/".$nombre,
+                PROJECT_DIR."/modulos/".$nombre."/sql/"
     );
 
 echo "[+]Creando estructura de directorios'\n";
