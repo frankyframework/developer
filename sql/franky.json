@@ -31,7 +31,7 @@
         {
             "php":"admin/franky/form.php",
             "css":"",
-            "js":["validaciones.js"],
+            "js":[],
             "jquery":["jquery-validate"],
             "permisos":[1],
             "constante":"FRM_PAGINAS",
