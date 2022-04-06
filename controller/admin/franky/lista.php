@@ -38,12 +38,12 @@ if($OrganosCorporales->getTotal() > 0)
 
 
 $MyFrankyMonster->setPHPFile(getVista("admin/template/grid.phtml"));
-$title_grid = "Administrar páginas";
+$title_grid = _developer("Administrar páginas");
 $class_grid = "cont_paginas";
-$error_grid = "No hay paginas creadas";
+$error_grid =  _developer("No hay paginas creadas");
 $deleteFunction = "EliminarPagina";
 $frm_constante_link = FRM_PAGINAS;
-$titulo_columnas_grid = array("nombre" => "Nombre","url" => "Url", "constante" =>  "Constante", "php" => "PHP");
+$titulo_columnas_grid = array("nombre" =>  _developer("Nombre"),"url" =>  _developer("Url"), "constante" =>   _developer("Constante"), "php" =>  _developer("PHP"));
 $value_columnas_grid = array("nombre","url" , "constante", "php");
 $css_columnas_grid = array("nombre" =>"w-xxxx-2","url"  =>"w-xxxx-2", "constante" =>"w-xxxx-3", "php" =>"w-xxxx-3");
 $permisos_grid = ADMINISTRAR_FRANKY;

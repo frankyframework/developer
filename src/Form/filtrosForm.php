@@ -7,7 +7,7 @@ class filtrosForm extends \Base\Form\filtrosForm
     {
         $this->add(array(
             'name' => 'entity',
-            'label' => 'Entidad:',
+            'label' =>  _developer('Entidad'),
             'type'  => 'select',
             'required'  => false,
             'atributos' => array(

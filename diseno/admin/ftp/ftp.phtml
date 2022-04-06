@@ -17,10 +17,10 @@
 
                     <div id='fileloadstatus' class="w-xxxx-12">
 
-                      <div id="progressbar" style="display:none;"><div class="progress-label">Loading...</div></div>
+                      <div id="progressbar" style="display:none;"><div class="progress-label"><?=_developer('Loading')?>...</div></div>
                     </div>
                     <div id='fileloadbutton' class="w-xxxx-12">
-                    <a href="javascript:void(0);" onclick="$('#files').click()">Subir Archivos</a>
+                    <a href="javascript:void(0);" onclick="$('#files').click()"><?=_developer('Subir Archivos')?></a>
                     <input type="file" name="files[]" id="files" multiple="true" class="input-file" style='display:none' />
                     </div>
                     </form>

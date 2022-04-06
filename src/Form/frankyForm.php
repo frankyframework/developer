@@ -25,7 +25,7 @@ class frankyForm extends \Franky\Form\Form
        
         $this->add(array(
                 'name' => 'nombre',
-                'label' => 'Nombre de la página:',
+                'label' =>  _developer('Nombre de la página'),
                 'type'  => 'text',
                 'required'  => true,
                 'atributos' => array(
@@ -41,7 +41,7 @@ class frankyForm extends \Franky\Form\Form
       
         $this->add(array(
                 'name' => 'constante',
-                'label' => 'Constante de identificacion:',
+                'label' =>  _developer('Constante de identificacion'),
                 'type'  => 'text',
                 'required'  => true,
                 'atributos' => array(
@@ -57,7 +57,7 @@ class frankyForm extends \Franky\Form\Form
         
          $this->add(array(
                 'name' => 'url',
-                'label' => 'URL:',
+                'label' =>  _developer('URL'),
                 'type'  => 'text',
                 'required'  => true,
                 'atributos' => array(
@@ -72,7 +72,7 @@ class frankyForm extends \Franky\Form\Form
          
         $this->add(array(
                 'name' => 'php',
-                'label' => 'Path del archivo PHP:',
+                'label' =>  _developer('Path del archivo PHP'),
                 'type'  => 'text',
                 'required'  => true,
                 'atributos' => array(
@@ -87,7 +87,7 @@ class frankyForm extends \Franky\Form\Form
         
          $this->add(array(
                 'name' => 'modulo',
-                'label' => 'Modulo:',
+                'label' =>  _developer('Modulo'),
                 'type'  => 'select',
                 'required'  => true,
                 'options' => array(),
@@ -99,7 +99,7 @@ class frankyForm extends \Franky\Form\Form
         
          
         $this->add(array(
-                'label' => 'Javascript:',
+                'label' =>  _developer('Javascript'),
                 'name' => 'js[]',                
                 'type'  => 'checkbox',                
                 'options' => array(
@@ -111,7 +111,7 @@ class frankyForm extends \Franky\Form\Form
         );
         
         $this->add(array(
-                'label' => 'Plugins jQuery:',
+                'label' =>  _developer('Plugins jQuery'),
                 'name' => 'jquery[]',                
                 'type'  => 'checkbox',                
                 'options' => array(
@@ -121,7 +121,7 @@ class frankyForm extends \Franky\Form\Form
         );
          
         $this->add(array(
-                'label' => 'AJAX:',
+                'label' =>  _developer('AJAX'),
                 'name' => 'ajax[]',                
                 'type'  => 'checkbox',                
                 'options' => array(
@@ -131,7 +131,7 @@ class frankyForm extends \Franky\Form\Form
         );
         
         $this->add(array(
-                'label' => 'Hoja de estilos CSS:',
+                'label' =>  _developer('Hoja de estilos CSS'),
                 'name' => 'css[]',                
                 'type'  => 'checkbox',                
                 'options' => array(
@@ -141,7 +141,7 @@ class frankyForm extends \Franky\Form\Form
         );
          
         $this->add(array(
-                'label' => 'Restringir acceso a:',
+                'label' =>  _developer('Restringir acceso a'),
                 'name' => 'permisos[]',                
                 'type'  => 'checkbox',                
                 'options' => array(
@@ -156,7 +156,7 @@ class frankyForm extends \Franky\Form\Form
                 'type'  => 'submit',
                 'atributos' => array(
                     'class'       => 'btn btn-primary btn-big float_right',
-                    'value' => "Guardar"
+                    'value' =>  _developer("Guardar")
                  )
                 
             )
