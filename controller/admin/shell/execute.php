@@ -28,7 +28,7 @@ foreach($modulos as $modulo)
 
 
 
-if(!$MyAccessList->MeDasChancePasar(ADMINISTRAR_SHELL))
+if(!$MyAccessList->MeDasChancePasar("administrar_shell"))
 {
     echo shellFontColor($MyMessageAlert->Message("sin_privilegios"),"rojo")."\n";
     exit;

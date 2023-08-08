@@ -102,7 +102,7 @@ $adminForm->setOptionsInput("js[]", $js_files);
 $adminForm->setOptionsInput("jquery[]", $jquery_files);
 $adminForm->setOptionsInput("ajax[]", $ajax_files);
 $adminForm->setOptionsInput("css[]", $css_files);
-$adminForm->setOptionsInput("permisos[]", $_Niveles_usuarios);
+$adminForm->setOptionsInput("permisos[]", getRoles());
 $adminForm->setData($data);
 $adminForm->setAtributoInput("callback","value", urldecode($callback));
 $title_form = "$title pagina";

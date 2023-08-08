@@ -42,7 +42,7 @@ if($OrganosCorporales->findPagina("url", $organosEntity->getUrl(),$organosEntity
     $error = true;
 }
 
-if(!$MyAccessList->MeDasChancePasar(ADMINISTRAR_FRANKY))
+if(!$MyAccessList->MeDasChancePasar("administrar_franky"))
 {
     $MyFlashMessage->setMsg("error",$MyMessageAlert->Message("sin_privilegios"));
     $error = true;

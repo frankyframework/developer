@@ -5,7 +5,7 @@ if(empty($file))
 {
     $MyRequest->redirect();
 }
-if(!$MyAccessList->MeDasChancePasar(ADMINISTRAR_FTP))
+if(!$MyAccessList->MeDasChancePasar("administrar_ftp"))
 {
     $MyRequest->redirect();
 }

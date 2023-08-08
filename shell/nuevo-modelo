@@ -2,14 +2,6 @@
 use Franky\Core\validaciones;
 use \Franky\Core\Plantilla;
 
-if($MySession->getVar('nivel') != NIVEL_USERDEVELOPER)
-{
-    echo shellFontColor($MyMessageAlert->Message("sin_privilegios"),"rojo")."\n";
-    exit;
-}
-
-
-
 
 ini_set('memory_limit', '-1');
 

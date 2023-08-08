@@ -5,18 +5,18 @@ return array(
             'children' =>  array(
     
         array(
-            "permiso" =>   ADMINISTRAR_FRANKY,
+            "permiso" =>   "administrar_franky",
             "url" => $MyRequest->url(LISTA_PAGINAS),
             "etiqueta" => _("Administrar Páginas")
         ),
         
         array(
-            "permiso" =>   ADMINISTRAR_SHELL,
+            "permiso" =>   "administrar_shell",
             "url" => $MyRequest->url(SHELL),
             "etiqueta" => _("Shell")
         ),
         array(
-            "permiso" =>   ADMINISTRAR_FTP,
+            "permiso" =>   "administrar_ftp",
             "url" => $MyRequest->url(ADMIN_FTP),
             "etiqueta" => _("FTP")
         ),

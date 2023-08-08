@@ -1,5 +1,4 @@
 <?php
-include 'lca.php';
 include 'util.php';
 bindtextdomain("{nombre}", PROJECT_DIR ."/modulos/{nombre}/locale");
 

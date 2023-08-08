@@ -11,7 +11,7 @@ foreach ($_FILES['files'] as $k => $l) {
     }
 }      
      
-if(!$MyAccessList->MeDasChancePasar(ADMINISTRAR_FTP))
+if(!$MyAccessList->MeDasChancePasar("administrar_ftp"))
 {
 
     $respuesta = array("error" => true,"msg" => $MyMessageAlert->Message("sin_privilegios"));  

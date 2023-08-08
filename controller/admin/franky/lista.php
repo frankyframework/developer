@@ -46,7 +46,7 @@ $frm_constante_link = FRM_PAGINAS;
 $titulo_columnas_grid = array("nombre" =>  _developer("Nombre"),"url" =>  _developer("Url"), "constante" =>   _developer("Constante"), "php" =>  _developer("PHP"));
 $value_columnas_grid = array("nombre","url" , "constante", "php");
 $css_columnas_grid = array("nombre" =>"w-xxxx-2","url"  =>"w-xxxx-2", "constante" =>"w-xxxx-3", "php" =>"w-xxxx-3");
-$permisos_grid = ADMINISTRAR_FRANKY;
+$permisos_grid = "administrar_franky";
 $MyFiltrosForm = new filtrosForm('paginar');
 $MyFiltrosForm->setMobile($Mobile_detect->isMobile());
 $MyFiltrosForm->addBusca();

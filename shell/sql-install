@@ -148,11 +148,6 @@ class InstallDB
 }
 
 
-if($MySession->getVar('nivel') != NIVEL_USERDEVELOPER)
-{
-    echo shellFontColor($MyMessageAlert->Message("sin_privilegios"),"rojo")."\n";
-    exit;
-}
 
 
 $modulo = $MyRequest->getRequest("modulo");

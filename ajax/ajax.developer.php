@@ -11,7 +11,7 @@ function EliminarPagina($id,$status)
         $organosEntity->setId($id);
         $organosEntity->setStatus($status);
         $respuesta = null;
-        if($MyAccessList->MeDasChancePasar(ADMINISTRAR_FRANKY))
+        if($MyAccessList->MeDasChancePasar("administrar_franky"))
         {
             if($OrganosCorporales->save($organosEntity->getArrayCopy()) == REGISTRO_SUCCESS)
             {
