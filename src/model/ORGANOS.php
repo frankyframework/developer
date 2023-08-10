@@ -19,7 +19,7 @@ class ORGANOS  extends \Franky\Database\Mysql\objectOperations
 
     function getData($id='',$nombre='',$url='',$status='1',$delete='1')
     {
-        $campos = array("nombre","url","id","css","js","jquery","php","permisos","constante","ajax","modulo","status");
+        $campos = array("nombre","url","id","css","js","jquery","php","resource","constante","ajax","modulo","status");
 
         if(!empty($id))
         {

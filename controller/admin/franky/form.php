@@ -22,7 +22,6 @@ if(!empty($id))
         $data["css[]"]        = json_decode($data["css"],true);
         $data["js[]"]         = json_decode($data["js"],true);
         $data["jquery[]"]     = json_decode($data["jquery"],true);
-        $data["permisos[]"]   = json_decode($data["permisos"],true);
         $data["ajax[]"]       = json_decode($data["ajax"],true);
 
         $adminForm->addId();
@@ -102,7 +101,6 @@ $adminForm->setOptionsInput("js[]", $js_files);
 $adminForm->setOptionsInput("jquery[]", $jquery_files);
 $adminForm->setOptionsInput("ajax[]", $ajax_files);
 $adminForm->setOptionsInput("css[]", $css_files);
-$adminForm->setOptionsInput("permisos[]", getRoles());
 $adminForm->setData($data);
 $adminForm->setAtributoInput("callback","value", urldecode($callback));
 $title_form = "$title pagina";

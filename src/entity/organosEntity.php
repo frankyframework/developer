@@ -13,7 +13,7 @@ namespace Developer\entity;
     public $js;
     public $jquery;
     public $php;
-    public $permisos;
+    public $resource;
     public $constante;
     public $ajax;
     public $modulo;
@@ -37,7 +37,7 @@ namespace Developer\entity;
         $this->js           = (isset($data['js']))          ? $data['js']           : null;
         $this->jquery       = (isset($data['jquery']))      ? $data['jquery']       : null;
         $this->php          = (isset($data['php']))         ? $data['php']          : null;
-        $this->permisos     = (isset($data['permisos']))    ? $data['permisos']     : null;
+        $this->resource     = (isset($data['resource']))    ? $data['resource']     : null;
         $this->constante    = (isset($data['constante']))   ? $data['constante']    : null;
         $this->ajax         = (isset($data['ajax']))        ? $data['ajax']         : null;
         $this->modulo       = (isset($data['modulo']))      ? $data['modulo']       : null;
@@ -91,9 +91,9 @@ namespace Developer\entity;
     {
         return $this->php;
     }
-    public function getPermisos()
+    public function getresource()
     {
-        return $this->permisos;
+        return $this->resource;
     }
     public function getConstante()
     {
@@ -144,9 +144,9 @@ namespace Developer\entity;
     {
         $this->php = $php;
     }
-    public function setPermisos($permisos)
+    public function setresource($resource)
     {
-        $this->permisos = $permisos;
+        $this->resource = $resource;
     }
     public function setConstante($constante)
     {

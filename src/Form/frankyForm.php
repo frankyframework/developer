@@ -141,11 +141,17 @@ class frankyForm extends \Franky\Form\Form
         );
          
         $this->add(array(
-                'label' =>  _developer('Restringir acceso a'),
-                'name' => 'permisos[]',                
-                'type'  => 'checkbox',                
-                'options' => array(
-                ),
+                'label' =>  _developer('Resource'),
+                'name' => 'resource',                
+                'type'  => 'text',                
+                'required'  => false,
+                'atributos' => array(
+                    'class'       => '',
+                    'maxlength' => 255
+                 ),
+                'label_atributos' => array(
+                    'class'       => 'desc_form_no_obligatorio'
+                 )
              
             )
         );

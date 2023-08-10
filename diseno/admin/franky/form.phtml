@@ -20,28 +20,92 @@
 
                  <?php echo $adminForm->getRow("php"); ?>
 
+                 <?php echo $adminForm->getRow("resource"); ?>
+
                  <?php echo $adminForm->getRow("modulo"); ?>
             </div>
         </div>
-        <div class="w-xxxx-12">
-            <div class="_cont_confit_page _js_css">
-                <?php echo $adminForm->getRow("css[]"); ?>
+        <div class="form-group">
+            <div id="jstreejquery">
+                
+                <ul>
+                    <li id="cat_0" >Plugins jQuery
+                        <?php  if(!empty($jquery_files)):?>
+                        <ul>
+                        <?php foreach($jquery_files as $plug => $name): ?>
+                            <li id="cat_<?=$plug; ?>"   <?=(in_array($plug, $data['jquery[]']) ? "data-jstree='{ \"selected\" : true }'": '')?>> <?=_($name); ?></li>
+                        <?php endforeach; ?>
+                        </ul>
+                        <?php endif; ?>
+                    </li>
+                </ul>
+                
             </div>
-
-            <div class="_cont_confit_page _js_css">
-                <?php echo $adminForm->getRow("permisos[]"); ?>
-            </div>
-
-            <div class="_cont_confit_page _js_css">
-                 <?php echo $adminForm->getRow("js[]"); ?>
-            </div>
-            <div class="_cont_confit_page _js_css">
-             <?php echo $adminForm->getRow("jquery[]"); ?>
-             </div>
-            <div class="_cont_confit_page _js_css">
-                 <?php echo $adminForm->getRow("ajax[]"); ?>
+            <div style="overflow:hidden;width: 1px; height:1px;">
+                <?php echo $adminForm->getRow("jquery[]"); ?>
             </div>
         </div>
+        <div class="form-group">
+            <div id="jstreeajax">
+                
+                <ul>
+                    <li id="cat_0" >AJAX
+                        <?php  if(!empty($ajax_files)):?>
+                        <ul>
+                        <?php foreach($ajax_files as $file => $name): ?>
+                            <li id="cat_<?=$file; ?>"   <?=(in_array($file, $data['ajax[]']) ? "data-jstree='{ \"selected\" : true }'": '')?>> <?=_($name); ?></li>
+                        <?php endforeach; ?>
+                        </ul>
+                        <?php endif; ?>
+                    </li>
+                </ul>
+                
+            </div>
+            <div style="overflow:hidden;width: 1px; height:1px;">
+                <?php echo $adminForm->getRow("ajax[]"); ?>
+            </div>
+        </div>
+        <div class="form-group">
+            <div id="jstreecss">
+                
+                <ul>
+                    <li id="cat_0" >CSS
+                        <?php  if(!empty($css_files)):?>
+                        <ul>
+                        <?php foreach($css_files as $file => $name): ?>
+                            <li id="cat_<?=$file; ?>"   <?=(in_array($file, $data['css[]']) ? "data-jstree='{ \"selected\" : true }'": '')?>> <?=_($name); ?></li>
+                        <?php endforeach; ?>
+                        </ul>
+                        <?php endif; ?>
+                    </li>
+                </ul>
+                
+            </div>
+            <div style="overflow:hidden;width: 1px; height:1px;">
+            <?php echo $adminForm->getRow("css[]"); ?>
+            </div>
+        </div>
+        <div class="form-group">
+            <div id="jstreejs">
+                
+                <ul>
+                    <li id="cat_0" >JS
+                        <?php  if(!empty($js_files)):?>
+                        <ul>
+                        <?php foreach($js_files as $file => $name): ?>
+                            <li id="cat_<?=$file; ?>"   <?=(in_array($file, $data['js[]']) ? "data-jstree='{ \"selected\" : true }'": '')?>> <?=_($name); ?></li>
+                        <?php endforeach; ?>
+                        </ul>
+                        <?php endif; ?>
+                    </li>
+                </ul>
+                
+            </div>
+            <div style="overflow:hidden;width: 1px; height:1px;">
+            <?php echo $adminForm->getRow("css[]"); ?>
+            </div>
+        </div>
+
         <div class="w-xxxx-12">
              <?php echo $adminForm->getRow("guardar"); ?>
         </div>
@@ -52,5 +116,81 @@
 <script >
 $(document).ready(function(){
          $("#frmfranky").validate();
+});
+
+$('#jstreejquery').on('changed.jstree', function (e, data) {
+    var i, j, r = [];
+    $('input[name="jquery[]"]').prop('checked',false);
+    for(i = 0, j = data.selected.length; i < j; i++) {
+     
+      $('input[name="jquery[]"][value="'+datfilea.instance.get_node(data.selected[i]).id.replace('cat_','')+'"]').prop('checked',true);
+      for(k = 0, l = +data.instance.get_node(data.selected[i]).parents.length; k < l; k++) {
+        $('input[name="jquery[]"][value="'+data.instance.get_node(data.selected[i]).parents[k].replace('cat_','')+'"]').prop('checked',true);
+      }
+    }
+    
+  }).jstree({
+    'checkbox': {
+        three_state: false,
+        cascade: 'up,down'
+    },
+  "plugins" : [ "checkbox" ]
+});
+
+$('#jstreeajax').on('changed.jstree', function (e, data) {
+    var i, j, r = [];
+    $('input[name="ajax[]"]').prop('checked',false);
+    for(i = 0, j = data.selected.length; i < j; i++) {
+     
+      $('input[name="ajax[]"][value="'+data.instance.get_node(data.selected[i]).id.replace('cat_','')+'"]').prop('checked',true);
+      for(k = 0, l = +data.instance.get_node(data.selected[i]).parents.length; k < l; k++) {
+        $('input[name="ajax[]"][value="'+data.instance.get_node(data.selected[i]).parents[k].replace('cat_','')+'"]').prop('checked',true);
+      }
+    }
+    
+  }).jstree({
+    'checkbox': {
+        three_state: false,
+        cascade: 'up,down'
+    },
+  "plugins" : [ "checkbox" ]
+});
+
+$('#jstreecss').on('changed.jstree', function (e, data) {
+    var i, j, r = [];
+    $('input[name="css[]"]').prop('checked',false);
+    for(i = 0, j = data.selected.length; i < j; i++) {
+     
+      $('input[name="css[]"][value="'+data.instance.get_node(data.selected[i]).id.replace('cat_','')+'"]').prop('checked',true);
+      for(k = 0, l = +data.instance.get_node(data.selected[i]).parents.length; k < l; k++) {
+        $('input[name="css[]"][value="'+data.instance.get_node(data.selected[i]).parents[k].replace('cat_','')+'"]').prop('checked',true);
+      }
+    }
+    
+  }).jstree({
+    'checkbox': {
+        three_state: false,
+        cascade: 'up,down'
+    },
+  "plugins" : [ "checkbox" ]
+});
+
+$('#jstreejs').on('changed.jstree', function (e, data) {
+    var i, j, r = [];
+    $('input[name="js[]"]').prop('checked',false);
+    for(i = 0, j = data.selected.length; i < j; i++) {
+     
+      $('input[name="js[]"][value="'+data.instance.get_node(data.selected[i]).id.replace('cat_','')+'"]').prop('checked',true);
+      for(k = 0, l = +data.instance.get_node(data.selected[i]).parents.length; k < l; k++) {
+        $('input[name="js[]"][value="'+data.instance.get_node(data.selected[i]).parents[k].replace('cat_','')+'"]').prop('checked',true);
+      }
+    }
+    
+  }).jstree({
+    'checkbox': {
+        three_state: false,
+        cascade: 'up,down'
+    },
+  "plugins" : [ "checkbox" ]
 });
 </script>
