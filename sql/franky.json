@@ -32,7 +32,7 @@
             "php":"admin/franky/form.php",
             "css":"",
             "js":[],
-            "jquery":["jquery-validate"],
+            "jquery":["jquery-validate","jstree"],
             "resource":"administrar_franky",
             "constante":"FRM_PAGINAS",
             "url":"admin/paginas/frm/",
