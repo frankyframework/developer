@@ -1,20 +1,6 @@
 {
     "data":[
         {
-            "php":"admin/shell/shell.php",
-            "css":["shell.css"],
-            "js":"",
-            "jquery":[],
-            "resource":"administrar_shell",
-            "constante":"SHELL",
-            "url":"admin/shell/",
-            "nombre":"Consola de comandos",
-            "ajax":["base/ajax.admin.js","blog/ajax.admin.js"],
-            "status":1,
-            "editable":0,
-            "modulo":"developer"
-        },
-        {
             "php":"admin/franky/lista.php",
             "css":"",
             "js":[],
@@ -40,20 +26,6 @@
             "ajax":[],
             "status":1,
             "editable":1,
-            "modulo":"developer"
-        },
-        {
-            "php":"admin/ftp/ftp.php",
-            "css":["shell.css"],
-            "js":[],
-            "jquery":["jquery-validate"],
-            "resource":"administrar_ftp",
-            "constante":"ADMIN_FTP",
-            "url":"admin/ftp/",
-            "nombre":"FTP",
-            "ajax":["developer/ajax.ftp.js"],
-            "status":1,
-            "editable":0,
             "modulo":"developer"
         }
     ]
