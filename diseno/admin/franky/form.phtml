@@ -123,7 +123,7 @@ $('#jstreejquery').on('changed.jstree', function (e, data) {
     $('input[name="jquery[]"]').prop('checked',false);
     for(i = 0, j = data.selected.length; i < j; i++) {
      
-      $('input[name="jquery[]"][value="'+datfilea.instance.get_node(data.selected[i]).id.replace('cat_','')+'"]').prop('checked',true);
+      $('input[name="jquery[]"][value="'+data.instance.get_node(data.selected[i]).id.replace('cat_','')+'"]').prop('checked',true);
       for(k = 0, l = +data.instance.get_node(data.selected[i]).parents.length; k < l; k++) {
         $('input[name="jquery[]"][value="'+data.instance.get_node(data.selected[i]).parents[k].replace('cat_','')+'"]').prop('checked',true);
       }
