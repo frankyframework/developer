@@ -12,7 +12,6 @@ $OrganosCorporales  = new ORGANOS();
 $organosEntity->setCss(json_encode($MyRequest->getRequest('css',array())));
 $organosEntity->setJs(json_encode($MyRequest->getRequest('js',array())));
 $organosEntity->setJquery(json_encode($MyRequest->getRequest('jquery',array())));
-$organosEntity->setPermisos(json_encode($MyRequest->getRequest('permisos',array())));
 $organosEntity->setAjax(json_encode($MyRequest->getRequest('ajax',array())));
 $organosEntity->setConstante(strtoupper($MyRequest->getRequest('constante')));
 
