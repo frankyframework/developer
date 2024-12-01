@@ -35,8 +35,13 @@ class InstallDB
             }
         }
 
-        $result = $IBD->Query(pathinfo($file,PATHINFO_FILENAME),"SELECT 1 from ".pathinfo($file,PATHINFO_FILENAME)." limit 1");
+        try {
+            $result = $IBD->Query(pathinfo($file,PATHINFO_FILENAME),"SELECT 1 from ".pathinfo($file,PATHINFO_FILENAME)." limit 1");
 
+        } catch (\Exception $e){
+            $result = IBD_ERR_DBUNAVAILABLE;
+
+        }
         if($result == IBD_ERR_DBUNAVAILABLE)
         {
             $sql = "CREATE TABLE ".pathinfo($file,PATHINFO_FILENAME)." (";
