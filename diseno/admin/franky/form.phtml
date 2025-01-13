@@ -33,7 +33,7 @@
                         <?php  if(!empty($jquery_files)):?>
                         <ul>
                         <?php foreach($jquery_files as $plug => $name): ?>
-                            <li id="cat_<?=$plug; ?>"   <?=(in_array($plug, $data['jquery[]']) ? "data-jstree='{ \"selected\" : true }'": '')?>> <?=_($name); ?></li>
+                            <li id="cat_<?=$plug; ?>"   <?=(!is_null($data['jquery[]']) && in_array($plug, $data['jquery[]']) ? "data-jstree='{ \"selected\" : true }'": '')?>> <?=_($name); ?></li>
                         <?php endforeach; ?>
                         </ul>
                         <?php endif; ?>
@@ -53,7 +53,7 @@
                         <?php  if(!empty($ajax_files)):?>
                         <ul>
                         <?php foreach($ajax_files as $file => $name): ?>
-                            <li id="cat_<?=$file; ?>"   <?=(in_array($file, $data['ajax[]']) ? "data-jstree='{ \"selected\" : true }'": '')?>> <?=_($name); ?></li>
+                            <li id="cat_<?=$file; ?>"   <?=(!is_null($data['ajax[]']) && in_array($file, $data['ajax[]']) ? "data-jstree='{ \"selected\" : true }'": '')?>> <?=_($name); ?></li>
                         <?php endforeach; ?>
                         </ul>
                         <?php endif; ?>
@@ -73,7 +73,7 @@
                         <?php  if(!empty($css_files)):?>
                         <ul>
                         <?php foreach($css_files as $file => $name): ?>
-                            <li id="cat_<?=$file; ?>"   <?=(in_array($file, $data['css[]']) ? "data-jstree='{ \"selected\" : true }'": '')?>> <?=_($name); ?></li>
+                            <li id="cat_<?=$file; ?>"   <?=(!is_null($data['css[]']) && in_array($file, $data['css[]']) ? "data-jstree='{ \"selected\" : true }'": '')?>> <?=_($name); ?></li>
                         <?php endforeach; ?>
                         </ul>
                         <?php endif; ?>
@@ -93,7 +93,7 @@
                         <?php  if(!empty($js_files)):?>
                         <ul>
                         <?php foreach($js_files as $file => $name): ?>
-                            <li id="cat_<?=$file; ?>"   <?=(in_array($file, $data['js[]']) ? "data-jstree='{ \"selected\" : true }'": '')?>> <?=_($name); ?></li>
+                            <li id="cat_<?=$file; ?>"   <?=(!is_null($data['js[]']) && in_array($file, $data['js[]']) ? "data-jstree='{ \"selected\" : true }'": '')?>> <?=_($name); ?></li>
                         <?php endforeach; ?>
                         </ul>
                         <?php endif; ?>
