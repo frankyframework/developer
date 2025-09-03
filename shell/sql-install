@@ -92,7 +92,7 @@ class InstallDB
         
 
 
-            echo shellFontColor("[*] Creando tabla ".pathinfo($file,PATHINFO_FILENAME),"default");
+            shellFontColor("[*] Creando tabla ".pathinfo($file,PATHINFO_FILENAME),"default");
         
             $IBD->Execute($sql);
             $result = $IBD->Query(pathinfo($file,PATHINFO_FILENAME),"SELECT 1 from ".pathinfo($file,PATHINFO_FILENAME)." limit 1");
@@ -115,7 +115,7 @@ class InstallDB
         if(!empty($data_sql))
         {
             $n = 1;
-            echo shellFontColor("[*] Agregando registros a ".pathinfo($file,PATHINFO_FILENAME)." del modulo $modulo \n","default");
+            shellFontColor("[*] Agregando registros a ".pathinfo($file,PATHINFO_FILENAME)." del modulo $modulo \n","default");
             foreach($data_sql as $data){
 
                 echo "\t".shellFontColor("[+] $n registros","default");
@@ -168,7 +168,7 @@ $validaciones =  new validaciones();
 $valid = $validaciones->validRules(array("Modulo" => array("valor" => $modulo,"required")));
 if(!$valid)
 {
-    echo shellFontColor($validaciones->getMsg(),"rojo")."\n\n".$help;
+    shellFontColor($validaciones->getMsg(),"rojo")."\n\n".$help;
     exit;
 }
 
