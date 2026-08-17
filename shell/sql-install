@@ -52,7 +52,7 @@ class InstallDB
                 .$attr['type']
                 .(isset($attr['length']) ? "(".$attr['length'].")" :"")." "
                 .(in_array($attr['type'],['varchar','text','char']) ? "COLLATE utf8_unicode_ci" :"")." "
-                .(isset($attr['default']) ? "DEFAULT '".$attr['default']."'" :"")." "
+                .(isset($attr['default']) ? "DEFAULT ".(in_array($attr['default'],["CURRENT_TIMESTAMP"]) ? $attr['default']: "'".$attr['default'])."'" :"")." "
                 .($attr['null'] == 1 ? 'NULL' : 'NOT NULL')." "
                 .($attr['auto_increment'] == 1 ? 'AUTO_INCREMENT' : '')
                 .",";
