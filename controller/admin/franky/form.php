@@ -1,6 +1,7 @@
 <?php
 use Developer\Form\frankyForm;
 use Developer\model\ORGANOS;
+use Developer\entity\organosEntity;
 use Franky\Filesystem\File;
 
 $id		= $MyRequest->getRequest('id');
@@ -11,11 +12,13 @@ $adminForm = new frankyForm("frmfranky");
 $modulo_bd = array();
 
 $OrganosCorporales  = new ORGANOS();
+$organosEntity  = new organosEntity();
 $title = "Alta";
 if(!empty($id))
 {
     $title = "Editar";
-        $result	 = $OrganosCorporales->getData($id);
+    $organosEntity->setId($id);
+        $result	 = $OrganosCorporales->getData($organosEntity->getArrayCopy());
 
         $data = $OrganosCorporales->getRows();
 

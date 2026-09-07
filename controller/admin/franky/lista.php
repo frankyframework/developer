@@ -1,56 +1,52 @@
 <?php
-use Base\Form\filtrosForm;
-use Franky\Core\paginacion;
 use Developer\model\ORGANOS;
+use Developer\entity\organosEntity;
 
-$OrganosCorporales  = new ORGANOS();
-$MyPaginacion = new paginacion();
-
-$MyPaginacion->setPage($MyRequest->getRequest('page',1));
-$MyPaginacion->setCampoOrden($MyRequest->getRequest('por',"nombre"));
-$MyPaginacion->setOrden($MyRequest->getRequest('order',"ASC"));
-$MyPaginacion->setTampageDefault($MyRequest->getRequest('tampag',25));			
-$busca_b	= $MyRequest->getRequest('busca_b');	
-
-$OrganosCorporales->setBusca($busca_b);
-$OrganosCorporales->setPage($MyPaginacion->getPage());
-$OrganosCorporales->setTampag($MyPaginacion->getTampageDefault());
-$OrganosCorporales->setOrdensql($MyPaginacion->getCampoOrden()." ".$MyPaginacion->getOrden());
-$result	= $OrganosCorporales->getData('', "","","");
-$MyPaginacion->setTotal($OrganosCorporales->getTotal());
-
-$lista_admin_data = array();
-if($OrganosCorporales->getTotal() > 0)
-{
-	$iRow = 0;	
-
-	while($registro = $OrganosCorporales->getRows())
-	{
-		$thisClass  = ((($iRow % 2) == 0) ? "formFieldDk" : "formFieldLt");
-		
-                 $lista_admin_data[] = array_merge($registro,array(
-                "thisClass"     => $thisClass,
-                "nuevo_estado"  => ($registro["status"] == 1 ? "desactivar" : "activar")
-                ));
-                $iRow++;
+if ($MyRequest->isAjax()) {
+        $callback	= $MyRequest->getRequest('callback');
+        $filters = $MyRequest->getRequest('filters');
+        $dataPost = json_decode(stripslashes($filters),true);
+        $dataPost = $dataPost['rules'];
+        $requestFranky = [];
+        $request = [];
+        foreach($dataPost as $data) {
+          
+          $request[$data['field']] = $MyRequest->Sanitizacion($data['data']);
+          
         }
+        $OrganosCorporales  = new ORGANOS();
+        $organosEntity  = new organosEntity($request);
+        $sortInput  = (!empty($MyRequest->getRequest('sidx',"nombre")) ? : "nombre");
+
+
+        $OrganosCorporales->setPage($MyRequest->getRequest('page',1));
+        $OrganosCorporales->setTampag($MyRequest->getRequest('rows',12));
+        $OrganosCorporales->setOrdensql($sortInput." ".$MyRequest->getRequest('sord',"ASC"));
+        $result	= $OrganosCorporales->getData($organosEntity->getArrayCopy());
+        $dataRows = ["rows" => [], "total" => ceil($OrganosCorporales->getTotal() / $MyRequest->getRequest('rows',12)), "page" => (int)$MyRequest->getRequest('page',1),"records" => $OrganosCorporales->getTotal()];
+
+        if($OrganosCorporales->getTotal() > 0)
+        {
+
+                while($registro = $OrganosCorporales->getRows())
+                {
+                        $registro = array_filter($registro, function($llave) {
+                                return !is_numeric($llave);
+                        }, ARRAY_FILTER_USE_KEY);
+                 
+                        $dataRows['rows'][] = array_merge($registro,array(
+                        "status"  => ($registro["status"] == 1 ? "desactivar" : "activar")
+                        ));
+                }
+        }
+
+        header('Content-Type: application/json; charset=utf-8');
+        echo $callback . '(' . json_encode($dataRows). ');';
+        die;
+} else {
+        $MyMetatag->setJs("/public/plugins/jqGrid/js/jquery.jqGrid.js");
+        $MyMetatag->setJs("/public/plugins/jqGrid/js/i18n/grid.locale-$lang_root.js");
+        $MyMetatag->setCSS("/public/plugins/jqGrid/css/ui.jqgrid.css");
+      
 }
-
-
-$MyFrankyMonster->setPHPFile(getVista("admin/template/grid.phtml"));
-$title_grid = _developer("Administrar páginas");
-$class_grid = "cont_paginas";
-$error_grid =  _developer("No hay paginas creadas");
-$deleteFunction = "EliminarPagina";
-$frm_constante_link = FRM_PAGINAS;
-$titulo_columnas_grid = array("nombre" =>  _developer("Nombre"),"url" =>  _developer("Url"), "constante" =>   _developer("Constante"), "php" =>  _developer("PHP"));
-$value_columnas_grid = array("nombre","url" , "constante", "php");
-$css_columnas_grid = array("nombre" =>"w-xxxx-2","url"  =>"w-xxxx-2", "constante" =>"w-xxxx-3", "php" =>"w-xxxx-3");
-$permisos_grid = "administrar_franky";
-$MyFiltrosForm = new filtrosForm('paginar');
-$MyFiltrosForm->setMobile($Mobile_detect->isMobile());
-$MyFiltrosForm->addBusca();
-$MyFiltrosForm->addSubmit();
-
-$MyFiltrosForm->setAtributoInput("busca_b", "value",$busca_b);
 ?>

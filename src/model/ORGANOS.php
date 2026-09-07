@@ -12,51 +12,36 @@ class ORGANOS  extends \Franky\Database\Mysql\objectOperations
         $this->busca = '';
     }
 
-    function setBusca($busca)
-    {
-        $this->busca = $busca;
-    }
 
-    function getData($id='',$nombre='',$url='',$status='1',$delete='1')
+    function getData($data = array())
     {
         $campos = array("nombre","url","id","css","js","jquery","php","resource","constante","ajax","modulo","status");
 
-        if(!empty($id))
+        $data = $this->optimizeEntity($data);
+        foreach($data as $k => $v)
         {
-            if(is_numeric($id))
+              if(!empty($v) || is_numeric($v))
             {
-              $this->where()->addAnd('id',$id,'=');
-            }
-            else
-            {
-              $this->where()->addAnd('constante',$id,'=');
-            }
-        }
-        if(!empty($url))
-        {
-          $this->where()->addAnd('url',"%$url%",'like');
-        }
-        if(!empty($nombre))
-        {
-          $this->where()->addAnd('nombre',"%$nombre%",'like');
-        }
-        if($delete != "")
-        {
-          $this->where()->addAnd('editable',$delete,'=');
-        }
-         if($status != "")
-        {
-          $this->where()->addAnd('status',$status,'=');
-        }
+                if(is_array($v))
+                {
+                    $this->where()->concat('AND (');
+                    foreach ($v as $_v)
+                    {
+                        $this->where()->addOr($k,$_v,'=');
 
-        if(!empty($this->busca))
-        {
-              $this->where()->concat('AND (');
-              $this->where()->addOr('nombre','%'.$this->busca.'%','like');
-              $this->where()->addOr('url','%'.$this->busca.'%','like');
-              $this->where()->concat(')');
+                    }
+                    $this->where()->concat(')');
+                }
+                else
+                {
+                    if(in_array($k,['id'])) {
+                        $this->where()->addAnd($k,$v,'=');
+                    } else {
+                        $this->where()->addAnd($k,"%".$v."%",'like');
+                    }
+                } 
+            }
         }
-
         return $this->getColeccion($campos);
 
     }
