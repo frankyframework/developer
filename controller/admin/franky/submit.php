@@ -2,13 +2,17 @@
 use Franky\Core\validaciones;
 use Developer\entity\organosEntity;
 use Developer\model\ORGANOS;
+use Franky\Haxor\Tokenizer;
 
+$Tokenizer = new Tokenizer();
 
+$id                 = $Tokenizer->decode($MyRequest->getRequest('id'));
+$callback           = $Tokenizer->decode($MyRequest->getRequest('callback'));
 
 $organosEntity    = new organosEntity($MyRequest->getRequest());
 $OrganosCorporales  = new ORGANOS();
 
-
+$organosEntity->setId($id);
 $organosEntity->setCss(json_encode($MyRequest->getRequest('css',array())));
 $organosEntity->setJs(json_encode($MyRequest->getRequest('js',array())));
 $organosEntity->setJquery(json_encode($MyRequest->getRequest('jquery',array())));

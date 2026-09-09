@@ -1,7 +1,7 @@
 <?php
 use Developer\model\ORGANOS;
 use Developer\entity\organosEntity;
-
+use Franky\Haxor\Tokenizer;
 if ($MyRequest->isAjax()) {
         $callback	= $MyRequest->getRequest('callback');
         $filters = $MyRequest->getRequest('filters');
@@ -16,6 +16,7 @@ if ($MyRequest->isAjax()) {
         }
         $OrganosCorporales  = new ORGANOS();
         $organosEntity  = new organosEntity($request);
+        $Tokenizer = new Tokenizer();
         $sortInput  = (!empty($MyRequest->getRequest('sidx',"nombre")) ? : "nombre");
 
 
@@ -35,7 +36,9 @@ if ($MyRequest->isAjax()) {
                         }, ARRAY_FILTER_USE_KEY);
                  
                         $dataRows['rows'][] = array_merge($registro,array(
-                        "status"  => ($registro["status"] == 1 ? "desactivar" : "activar")
+                        "id" => $Tokenizer->token('dev-pages',$registro["id"]),
+                        "status"  => ($registro["status"] == 1 ? "desactivar" : "activar"),
+                        "callback" => $Tokenizer->token('dev-pages',$MyRequest->getURI()),
                         ));
                 }
         }

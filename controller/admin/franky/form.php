@@ -3,8 +3,10 @@ use Developer\Form\frankyForm;
 use Developer\model\ORGANOS;
 use Developer\entity\organosEntity;
 use Franky\Filesystem\File;
+use Franky\Haxor\Tokenizer;
 
-$id		= $MyRequest->getRequest('id');
+$Tokenizer = new Tokenizer();
+$id         = $Tokenizer->decode($MyRequest->getRequest('id'));
 $callback	= $MyRequest->getRequest('callback');
 
 $data = $MyFlashMessage->getResponse();
@@ -26,7 +28,7 @@ if(!empty($id))
         $data["js[]"]         = json_decode($data["js"],true);
         $data["jquery[]"]     = json_decode($data["jquery"],true);
         $data["ajax[]"]       = json_decode($data["ajax"],true);
-
+        $data["id"] = $Tokenizer->token('dev-pages',$data["id"]);
         $adminForm->addId();
 }
 

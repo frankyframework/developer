@@ -6,9 +6,9 @@ function EliminarPagina($id,$status)
         global $MyMessageAlert;
 
         $OrganosCorporales  = new \Developer\model\ORGANOS();
-
+        $Tokenizer = new \Franky\Haxor\Tokenizer;
         $organosEntity = new \Developer\entity\organosEntity();
-        $organosEntity->setId($id);
+        $organosEntity->setId(addslashes($Tokenizer->decode($id)));
         $organosEntity->setStatus($status);
         $respuesta = null;
         if($MyAccessList->MeDasChancePasar("administrar_franky"))
